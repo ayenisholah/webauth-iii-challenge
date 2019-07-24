@@ -40,3 +40,19 @@ router.post('/login', (req, res) => {
       res.status(500).json(error);
     });
 });
+
+function generateToken(user) {
+  const payload = {
+    sub: user.id,
+    username: user.username,
+    roles: ['User']
+  }
+
+  const options = {
+    expiresIn: '1d'
+  }
+
+  return jwt.sign(payload, secret.jwtSecret, options);
+}
+
+module.exports = router;
