@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
   if (token) {
     jwt.verify(token, secret.jwtSecret, (err, decodedToken) => {
       if (err) {
-        res.status(401).json({ you: 'can\'t touch this' });
+        res.status(401).json({ you: "can't touch this" });
       } else {
         req.decodedToken = decodedToken;
         console.log('decoded token', req.decodedToken);
